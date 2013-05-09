@@ -1,20 +1,16 @@
-
-<%@ page import="com.grailsrocks.invitationonly.UserInvitation" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="${grailsApplication.config.invitation.only.admin.layout ?: 'main'}" />
-        <g:set var="entityName" value="${message(code: 'userInvitation.label', default: 'UserInvitation')}" />
+        <g:set var="entityName" value="${message(code: 'userInvitation.label', default: 'User Invitation')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div class="body">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+            <div class="page-header"><h1><g:message code="default.list.label" args="[entityName]" /></h1></div>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <div class="list">
-                <table>
+                <table class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
                         
@@ -35,10 +31,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${userInvitationInstanceList}" status="i" var="userInvitationInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                    <g:each in="${userInvitationInstanceList}" var="userInvitationInstance">
+                        <tr>
                         
-                            <td><g:link action="show" id="${userInvitationInstance.id}">${fieldValue(bean: userInvitationInstance, field: "id")}</g:link></td>
+                            <td>${fieldValue(bean: userInvitationInstance, field: "id")}</td>
                         
                             <td>${fieldValue(bean: userInvitationInstance, field: "email")}</td>
                         
@@ -55,15 +51,14 @@
                             <td><g:if test="${!userInvitationInstance.approved}">
                                 <g:link action="approve" params="[email:userInvitationInstance.email, group:userInvitationInstance.groupName]">Approve</g:link>
                                 </g:if>
+                                <g:link action="delete" id="${userInvitationInstance.id}" onclick="return confirm('Are you sure?');">Delete</g:link>
                             </td>
                         </tr>
                     </g:each>
                     </tbody>
                 </table>
-            </div>
             <div class="paginateButtons">
                 <g:paginate total="${userInvitationInstanceTotal}" />
             </div>
-        </div>
     </body>
 </html>
