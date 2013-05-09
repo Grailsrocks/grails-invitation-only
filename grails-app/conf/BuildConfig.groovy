@@ -18,6 +18,9 @@ grails.project.dependency.resolution = {
     dependencies {
     }
     plugins {
+        runtime(':asynchronous-mail:1.0-RC3') {
+            excludes 'hibernate'
+         }
         compile ":fields:1.3"
         runtime ":hibernate:$grailsVersion"
         compile ":mail:1.0.1"
