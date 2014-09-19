@@ -1,6 +1,6 @@
 class InvitationOnlyGrailsPlugin {
 
-    def version = "1.1"
+    def version = "2.4.3"
     def grailsVersion = "2.0 > *"
     def groupId = "com.cc.plugins"
     def pluginExcludes = [

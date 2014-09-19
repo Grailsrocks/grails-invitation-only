@@ -17,10 +17,14 @@ grails.project.dependency.resolution = {
         runtime(':asynchronous-mail:1.0-RC3') {
             excludes 'hibernate'
         }
-        compile ":fields:1.3"
-        runtime ":hibernate:$grailsVersion"
-        compile ":mail:1.0.1"
-        build(":tomcat:$grailsVersion", ":release:2.0.3", ":rest-client-builder:1.0.2") {
+        compile ":fields:1.3", {
+            excludes 'spock'
+        }
+        runtime ":hibernate:3.6.10.14"
+        compile ":mail:1.0.7", {
+            excludes 'spring-test'
+        }
+        build(":tomcat:7.0.52.1", ":release:2.0.3", ":rest-client-builder:1.0.2") {
             export = false
         }
     }
