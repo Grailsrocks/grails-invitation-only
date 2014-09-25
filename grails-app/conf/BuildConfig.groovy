@@ -14,10 +14,10 @@ grails.project.dependency.resolution = {
     dependencies {
     }
     plugins {
-        runtime(':asynchronous-mail:1.0-RC3') {
+        runtime(':asynchronous-mail:1.1') {
             excludes 'hibernate'
         }
-        compile ":fields:1.3", {
+        compile ":fields:1.4", {
             excludes 'spock'
         }
         runtime ":hibernate:3.6.10.14"
