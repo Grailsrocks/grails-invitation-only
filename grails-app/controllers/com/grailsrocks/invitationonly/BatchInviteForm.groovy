@@ -1,12 +1,12 @@
 package com.grailsrocks.invitationonly
 
-import org.codehaus.groovy.grails.commons.ApplicationHolder
+import grails.util.Holders
 import org.codehaus.groovy.grails.validation.Validateable
 
 @Validateable
 class BatchInviteForm {
 
-    def grailsApplication = ApplicationHolder.application
+    def grailsApplication = Holders.grailsApplication
 
     String subject  = "You've been invited to: " + grailsApplication.metadata.'app.name'
     String addresses
@@ -14,7 +14,7 @@ class BatchInviteForm {
     String message = """
 Hi,
 
-We'd love it if you'd give ${ApplicationHolder.application.metadata.'app.name'} a try.
+We'd love it if you'd give ${grailsApplication.metadata.'app.name'} a try.
 
 Just click on the link below:
 

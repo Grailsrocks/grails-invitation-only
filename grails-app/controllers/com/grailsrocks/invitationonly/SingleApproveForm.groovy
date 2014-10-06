@@ -1,19 +1,19 @@
 package com.grailsrocks.invitationonly
 
-import org.codehaus.groovy.grails.commons.ApplicationHolder
+import grails.util.Holders
 import org.codehaus.groovy.grails.validation.Validateable
 
 @Validateable
 class SingleApproveForm {
 
-    def grailsApplication = ApplicationHolder.application
+    def grailsApplication = Holders.grailsApplication
 
     String subject  = "Your request to use " + grailsApplication.metadata.'app.name' + ' has been approved'
     String senderAddress = ""
     String message = """
 Hi,
 
-We've approved your invitation request for ${ApplicationHolder.application.metadata.'app.name'}!
+We've approved your invitation request for ${grailsApplication.metadata.'app.name'}!
 
 Just click on the link below to take part:
 
