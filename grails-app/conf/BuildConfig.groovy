@@ -10,6 +10,8 @@ grails.project.dependency.resolution = {
         grailsPlugins()
         grailsHome()
         grailsCentral()
+	mavenLocal()
+	mavenCentral()
     }
     dependencies {
     }
@@ -24,7 +26,7 @@ grails.project.dependency.resolution = {
         compile ":mail:1.0.7", {
             excludes 'spring-test'
         }
-        build(":tomcat:7.0.52.1", ":release:2.0.3", ":rest-client-builder:1.0.2") {
+        build(":tomcat:7.0.52.1", ":release:3.0.1", ":rest-client-builder:2.0.1") {
             export = false
         }
     }
