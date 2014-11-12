@@ -4,7 +4,7 @@
     <title>Invitations - Main</title>
 </head>
 <body>
-    <h1>Invitations</h1>
+    <div class="page-header"><h1>Invitations</h1></div>
     
     <g:if test="${flash.message}">
         <p class="info">
@@ -12,9 +12,9 @@
         </p>
     </g:if>
     
-    <h2>Statistics</h2>
+    <h2>Statistics</h2><hr>
     
-    <table>
+    <table class="table table-bordered table-hover table-striped">
         <tr><th>Invitation group</th><th>Approved</th><th>Pending</th><th>Total in group</th><th>Total participated</th></tr>
         <g:each in="${stats.totalInvitationsPerGroup.keySet().sort()}" var="groupName">
             <tr>
@@ -29,14 +29,14 @@
 
     <p>Existing invitation groups: ${groups.join(', ').encodeAsHTML()}</p>
 
-    <h2>Actions</h2>
+    <h2>Actions</h2><hr>
     
     <g:link action="list">View/edit invitations</g:link> |
     <g:link action="batchInvite">Send batch of invitations</g:link> |
     <g:link action="batchApprove">Approve a batch of invitations</g:link><br/>
-
+    <br>
     Download email addresses by group:
-    <table>
+    <table class="table table-bordered table-hover table-striped">
     <g:each in="${groups}" var="g">
         <tr><td>${g.encodeAsHTML()}</td>
             <td><g:link action="export" params="[group:g, axis:'pending']">Pending</g:link></td>

@@ -1,0 +1,19 @@
+<plugin name='invitation-only' version='1.2' grailsVersion='2.0 &gt; *'>
+  <author>Marc Palmer</author>
+  <authorEmail>marc@grailsrocks.com</authorEmail>
+  <title>Simple way to track and check user-invites by email address</title>
+  <description>\
+A simple mechanism for tracking who is invited to trial your service, and checking if an address is permitted to try it.
+</description>
+  <documentation>http://grails.org/plugin/invitation-only</documentation>
+  <type>InvitationOnlyGrailsPlugin</type>
+  <resources>
+    <resource>BootStrap</resource>
+    <resource>com.grailsrocks.invitationonly.AdminInvitationsController</resource>
+    <resource>com.grailsrocks.invitationonly.BatchApproveForm</resource>
+    <resource>com.grailsrocks.invitationonly.BatchInviteForm</resource>
+    <resource>com.grailsrocks.invitationonly.SingleApproveForm</resource>
+    <resource>com.grailsrocks.invitationonly.UserInvitation</resource>
+    <resource>com.grailsrocks.invitationonly.InvitationService</resource>
+  </resources>
+</plugin>

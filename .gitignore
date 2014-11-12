@@ -1,2 +1,7 @@
+.project
+.classpath
+.settings/**
+target/**
+target-eclipse/**
 web-app/META-INF
 web-app/WEB-INF

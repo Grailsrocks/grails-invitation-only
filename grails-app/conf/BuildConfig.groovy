@@ -1,32 +1,33 @@
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir	= "target/test-reports"
-//grails.project.war.file = "target/${appName}-${appVersion}.war"
+
 grails.project.dependency.resolution = {
-    // inherit Grails' default dependencies
     inherits( "global" ) {
-        // uncomment to disable ehcache
-        // excludes 'ehcache'
     }
     log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
-    repositories {        
+    repositories {
         grailsPlugins()
         grailsHome()
         grailsCentral()
-
-        // uncomment the below to enable remote dependency resolution
-        // from public Maven repositories
-        //mavenLocal()
-        //mavenCentral()
-        //mavenRepo "http://snapshots.repository.codehaus.org"
-        //mavenRepo "http://repository.codehaus.org"
-        //mavenRepo "http://download.java.net/maven/2/"
-        //mavenRepo "http://repository.jboss.com/maven2/"
+	mavenLocal()
+	mavenCentral()
     }
     dependencies {
-        // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-
-        // runtime 'mysql:mysql-connector-java:5.1.5'
     }
-
+    plugins {
+        runtime(':asynchronous-mail:1.1') {
+            excludes 'hibernate'
+        }
+        compile ":fields:1.4", {
+            excludes 'spock'
+        }
+        runtime ":hibernate:3.6.10.14"
+        compile ":mail:1.0.7", {
+            excludes 'spring-test'
+        }
+        build(":tomcat:7.0.52.1", ":release:3.0.1", ":rest-client-builder:2.0.1") {
+            export = false
+        }
+    }
 }

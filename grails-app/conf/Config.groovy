@@ -6,20 +6,22 @@ grails.views.gsp.encoding="UTF-8"
 grails.validateable.packages = ['com.grailsrocks']
 
 log4j = {
-    root {
-        info 'stdout'
-    }
-    
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
-	       'org.codehaus.groovy.grails.web.pages' //  GSP
-    info   'grails.app'
+            'org.codehaus.groovy.grails.web.pages', //  GSP
+            'org.codehaus.groovy.grails.web.sitemesh', //  layouts
+            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+            'org.codehaus.groovy.grails.web.mapping', // URL mapping
+            'org.codehaus.groovy.grails.commons', // core / classloading
+            'org.codehaus.groovy.grails.plugins', // plugins
+            'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
+            'org.springframework',
+            'org.hibernate',
+            'net.sf.ehcache.hibernate'
 
-    debug   'grails.app.controller',
-            'grails.app.service',
-            'grails.app.task',
-            'grails.app.domain'
-//            'org.codehaus.groovy.grails.web.mapping' // URL mapping
-    
+    warn   'org.mortbay.log'
+
+    debug   'grails.app.controllers.com.grailsrocks', 'grails.app.services.com.grailsrocks',
+            'grails.app.domain.com.grailsrocks'
 }
 
 invitation.only.admin.layout = "invitationAdmin"
@@ -29,21 +31,16 @@ environments {
         grails {
             mail {
                 // Hey you need to update this to run-app
-                host = "mail.anyware.co.uk"
+                host = "smtp.gmail.com"
+                port = 465
+                props = ["mail.smtp.auth":"true",
+                    "mail.smtp.socketFactory.port":"465",
+                    "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                    "mail.smtp.socketFactory.fallback":"false"]
+                username = "xyz@gmail.com"
+                password = "xyz"
             }
         }
-    }
-    
-    test {
-        log4j = {
-            root {
-                info 'stdout'
-            }
-
-            warn  'org.codehaus.groovy.grails.web.servlet',  //  controllers
-        	       'org.codehaus.groovy.grails.web.pages' //  GSP
-            debug   'grails.app', 'com.grailsrocks'
-
-        }
+        grails.mail.overrideAddress = "xyzabc@gmail.com"
     }
 }

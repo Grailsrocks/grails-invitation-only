@@ -5,9 +5,8 @@ class BootStrap {
     
     def init = { sc ->
         if (Environment.current == Environment.DEVELOPMENT) {
+            //TODO see config.groovy for mail settings before run-app
             invitationService.inviteUser('keentester@somedomain.com', 'beta')
-            invitationService.inviteUser('stalker@applovers.com', 'beta')
-            invitationService.inviteUser('realcustomer@alovelyfluffyplace.org', 'alpha')
             invitationService.inviteUser('stalker@applovers.com', 'alpha')
         }
     }
